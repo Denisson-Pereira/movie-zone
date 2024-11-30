@@ -1,10 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { TitleCustoms } from '../customs/titleCustoms';
 import { colors } from '../colors';
-import { FontAwesome } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { useState } from 'react';
 
 export default function SignIn() {
+  const [passwordType, setPasswordType] = useState<boolean>(true);
+
+  const seePassword = () => {
+    if (passwordType) {
+      setPasswordType(false);
+    } else {
+      setPasswordType(true);
+    }
+  }
+
+
   return (
     <View style={styles.container}>
       <TitleCustoms
@@ -33,8 +44,14 @@ export default function SignIn() {
             placeholder='Password'
             placeholderTextColor={colors.grey}
             style={{ fontSize: 18 }}
+            secureTextEntry={passwordType}
           />
-          <FontAwesome name="eye-slash" size={20} color={colors.grey} />
+          <Entypo 
+            name={passwordType ? 'eye-with-line' : 'eye'} 
+            color={colors.grey} 
+            onPress={seePassword}
+            size={20} 
+          />
         </View>
       </View>
     </View>
