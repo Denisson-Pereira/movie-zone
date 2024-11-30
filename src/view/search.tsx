@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Categories() {
+export default function Search() {
   return (
     <View style={styles.container}>
-      <Text>categories</Text>
+      <Text>search</Text>
       <StatusBar style="auto" />
     </View>
   );

@@ -1,10 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FontAwesome, FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5, Octicons } from "@expo/vector-icons";
 import Home from "../view/home";
-import Tops from "../view/tops";
-import Plus from "../view/plus";
-import Categories from "../view/categories";
 import Profile from "../view/profile";
+import Search from "../view/search";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,39 +21,24 @@ export const TabRoutes = () => {
                 name='home'
                 component={Home}
                 options={{
-                    tabBarIcon: ({ color }) => <Ionicons name='compass' color={color} size={30} />
+                    tabBarIcon: ({ color }) => <Octicons name='home' color={color} size={30} />
                 }}
             />
 
             <Tab.Screen
-                name='tops'
-                component={Tops}
+                name='search'
+                component={Search}
                 options={{
-                    tabBarIcon: ({ color }) => <MaterialCommunityIcons name='map-marker' color={color} size={30} />
+                    tabBarIcon: ({ color }) => <AntDesign name='search1' color={color} size={30} />
                 }}
             />
 
-            <Tab.Screen
-                name="plus"
-                component={Plus}
-                options={{
-                    tabBarIcon: ({ color }) => <MaterialCommunityIcons name='map-marker' color={color} size={30} />
-                }}
-            />
-
-            <Tab.Screen
-                name="categories"
-                component={Categories}
-                options={{
-                    tabBarIcon: ({ color, size }) => <FontAwesome name='heart' color={color} size={size} />
-                }}
-            />
 
             <Tab.Screen
                 name='profile'
                 component={Profile}
                 options={{
-                    tabBarIcon: ({ color }) => <MaterialCommunityIcons name='bell' color={color} size={30} />
+                    tabBarIcon: ({ color }) => <FontAwesome5 name='user' color={color} size={30} />
                 }}
             />
 
