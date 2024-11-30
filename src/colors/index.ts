@@ -1,7 +1,7 @@
 export const colors = {
     red: '#FF0000',
     white: '#FFFFFF',
-    bg: '#1D1D1D',
+    bg: '#0d0e0f',
     grey: '#535355',
-    inputs: '#242426'
+    inputs: '#1b1b1d'
 }
