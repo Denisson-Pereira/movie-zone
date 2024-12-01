@@ -4,11 +4,14 @@ import { IMovies } from "../models/IMovies";
 import { searchMoviesByName } from "../services/searchMoviesByName";
 import { FontAwesome } from '@expo/vector-icons'; 
 import { colors } from "../colors";
+import { useNavigate } from "../hooks/useNavigate";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [movies, setMovies] = useState<IMovies[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const { navigate } = useNavigate();
 
   const handleSearch = async () => {
     if (searchTerm.trim() === "") {
@@ -37,7 +40,7 @@ export default function Search() {
         </Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => alert(`See details of ${item.title}`)}
+          onPress={() => navigate('movieDetails', { id: item.id })}
         >
           <Text style={styles.buttonText}>See Details</Text>
         </TouchableOpacity>
