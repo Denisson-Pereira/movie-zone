@@ -29,7 +29,7 @@ export default function SignIn() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       Alert.alert('Sucess', 'Login successful!');
-      navigate('signIn');
+      navigate('initial');
     } catch (error: any) {
       Alert.alert('Error', error.message);
     }
