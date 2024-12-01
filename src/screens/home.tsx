@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { Header } from '../components/header';
 import { colors } from '../colors';
 import { useEffect, useState } from 'react';
@@ -10,11 +10,12 @@ import { FontAwesome } from '@expo/vector-icons';
 
 export default function Home() {
   const [movies, setMovies] = useState<IMovies[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0); 
 
   useEffect(() => {
     async function fetchData() {
       const response = await getMoviesNowPlaying();
-      setMovies(response);
+      setMovies(response.slice(0, 4)); 
     }
     fetchData();
   }, []);
@@ -23,41 +24,66 @@ export default function Home() {
     return <Text>Loading...</Text>;
   }
 
+
   return (
     <View style={styles.container}>
       <Header />
-      <View style={styles.primeContainer}>
-        <Image
-          source={{ uri: `https://image.tmdb.org/t/p/original/${movies[0].poster_path}` }}
-          style={styles.image}
-        />
-        <LinearGradient
-          colors={[
-            'rgba(0, 0, 0, 0.048)', 
-            'rgba(0, 0, 0, 0.493)',  
-            'rgba(0, 0, 0, 0.795)',  
-            'rgba(0, 0, 0, 0.842)',  
-            colors.bg,              
-          ]}
-          style={styles.shadow}
-        />
-        <View style={styles.info}>
-          <Text style={styles.movieTitle}>{movies[0].title}</Text>
-          <View style={styles.ratingAndDateContainer}>
-            <View style={styles.ratingContainer}>
-              <FontAwesome name="star" size={18} color="black" style={styles.star} />
-              <Text style={styles.voteAverage}>{movies[0].vote_average}</Text>
+      <ScrollView
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
+        style={styles.scrollView}
+      >
+        {movies.map((movie, index) => (
+          <View key={movie.id} style={styles.primeContainer}>
+            <Image
+              source={{ uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}` }}
+              style={styles.image}
+            />
+            <LinearGradient
+              colors={[
+                'rgba(0, 0, 0, 0.048)', 
+                'rgba(0, 0, 0, 0.493)',  
+                'rgba(0, 0, 0, 0.795)',  
+                'rgba(0, 0, 0, 0.842)',  
+                colors.bg,              
+              ]}
+              style={styles.shadow}
+            />
+            <View style={styles.info}>
+              <Text style={styles.movieTitle}>{movie.title}</Text>
+              <View style={styles.ratingAndDateContainer}>
+                <View style={styles.ratingContainer}>
+                  <FontAwesome name="star" size={18} color="black" style={styles.star} />
+                  <Text style={styles.voteAverage}>{movie.vote_average}</Text>
+                </View>
+                <View style={styles.rConstant}>
+                  <Text>R</Text>
+                </View>
+                <Text style={styles.releaseDate}>{movie.release_date}</Text>
+                <Text style={styles.releaseDate}>Action</Text>
+              </View>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => alert(`See details of ${movie.title}`)}
+              >
+                <Text style={styles.buttonText}>See Details</Text>
+              </TouchableOpacity>
             </View>
-            <View style={styles.rConstant}>
-              <Text>R</Text>
-            </View>
-            <Text style={styles.releaseDate}>{movies[0].release_date}</Text>
-            <Text style={styles.releaseDate}>Action</Text>
           </View>
-          <TouchableOpacity style={styles.button} onPress={() => alert('See details pressed')}>
-            <Text style={styles.buttonText}>See Details</Text>
-          </TouchableOpacity>
-        </View>
+        ))}
+      </ScrollView>
+      <View style={styles.indicatorsContainer}>
+        {movies.map((_, index) => (
+          <View
+            key={index}
+            style={[
+              styles.indicator,
+              currentIndex === index ? styles.activeIndicator : null,
+            ]}
+          />
+        ))}
       </View>
     </View>
   );
@@ -68,17 +94,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.bg,
     paddingTop: 50,
-    paddingHorizontal: 20,
-    gap: 30
+    paddingHorizontal: 10,
+    gap: 20
+  },
+  scrollView: {
+    flexGrow: 0,
   },
   primeContainer: {
+    width: 380, 
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+    marginHorizontal: 6
   },
   image: {
-    width: "100%",
-    height: 500,
+    width: '100%',
+    height: 400,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
   },
@@ -91,13 +122,13 @@ const styles = StyleSheet.create({
   },
   info: {
     position: 'absolute',
-    bottom: 50,
+    bottom: 0,
     flexDirection: 'column',
     justifyContent: 'center',
     width: '100%',
     paddingHorizontal: 20,
     alignItems: 'center',
-    gap: 10
+    gap: 10,
   },
   movieTitle: {
     color: colors.white,
@@ -110,7 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     alignItems: 'center',
-    gap: 20
+    gap: 20,
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -125,16 +156,16 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  rConstant: {
-    backgroundColor: colors.white,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 20,
-    height: 20,
-    borderRadius: 50
-  },
   star: {
     marginRight: 5,
+  },
+  rConstant: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    borderRadius: 50,
+    width: 20,
+    height: 20
   },
   voteAverage: {
     fontSize: 15,
@@ -157,5 +188,20 @@ const styles = StyleSheet.create({
     color: colors.ice,
     fontSize: 16,
     fontWeight: '400',
+  },
+  indicatorsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  indicator: {
+    width: 20,
+    height: 2,
+    borderRadius: 5,
+    backgroundColor: 'gray',
+    marginHorizontal: 5,
+  },
+  activeIndicator: {
+    backgroundColor: colors.orange,
   },
 });
