@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     btn: {
-        backgroundColor: colors.red,
+        backgroundColor: colors.orange,
         paddingHorizontal: 20,
-        paddingVertical: 10,
+        paddingVertical: 13,
         borderRadius: 10
     },
     txtBtn: {
-        color: colors.white,
+        color: colors.ice,
         fontSize: 17,
         fontWeight: '300'
     }

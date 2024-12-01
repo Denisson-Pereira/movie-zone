@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign, FontAwesome5, Octicons } from "@expo/vector-icons";
-import Home from "../view/home";
-import Profile from "../view/profile";
-import Search from "../view/search";
+import Home from "../screens/home";
+import Profile from "../screens/profile";
+import Search from "../screens/search";
 
 const Tab = createBottomTabNavigator();
 

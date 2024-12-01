@@ -2,9 +2,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { useAuth } from "../context";
 import { NavigationContainer } from "@react-navigation/native";
 import { TabRoutes } from "./tab.routes";
-import Initial from "../view/initial";
-import SignIn from "../view/signIn";
-import SignUp from "../view/signUp";
+import Initial from "../screens/initial";
+import SignIn from "../screens/signIn";
+import SignUp from "../screens/signUp";
 
 const Stack = createStackNavigator();
 

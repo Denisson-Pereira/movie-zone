@@ -6,8 +6,6 @@ import { TitleCustoms } from '../customs/titleCustoms';
 import { BtnCustoms } from '../customs/btnCustoms';
 
 export default function Initial() {
-    const { navigate } = useNavigate();
-
   return (
     <BgInitialContainer>
         <View style={styles.container}>
@@ -38,7 +36,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#00000075'
     },
     description: {
-        color: colors.white,
+        color: colors.ice,
         fontSize: 15,
         letterSpacing: 1
     },
