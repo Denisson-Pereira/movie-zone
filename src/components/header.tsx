@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'row',
         alignItems: 'center',
+        paddingHorizontal: 15,
+        paddingVertical: 10
     },
     icon: {
         justifyContent: 'center',

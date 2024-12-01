@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { Header } from '../components/header';
 import { colors } from '../colors';
 import { useEffect, useState } from 'react';
@@ -24,16 +23,16 @@ export default function Home() {
     return <Text>Loading...</Text>;
   }
 
-
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.verticalScrollView} contentContainerStyle={styles.verticalContent}>
+      <StatusBar barStyle="light-content" />
       <Header />
       <ScrollView
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
-        style={styles.scrollView}
+        style={styles.horizontalScrollView}
       >
         {movies.map((movie, index) => (
           <View key={movie.id} style={styles.primeContainer}>
@@ -85,19 +84,21 @@ export default function Home() {
           />
         ))}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  verticalScrollView: {
     flex: 1,
     backgroundColor: colors.bg,
+  },
+  verticalContent: {
     paddingTop: 50,
     paddingHorizontal: 10,
-    gap: 20
+    gap: 20,
   },
-  scrollView: {
+  horizontalScrollView: {
     flexGrow: 0,
   },
   primeContainer: {
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-    marginHorizontal: 6
+    marginHorizontal: 6,
   },
   image: {
     width: '100%',
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 50,
     width: 20,
-    height: 20
+    height: 20,
   },
   voteAverage: {
     fontSize: 15,
