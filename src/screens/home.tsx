@@ -8,10 +8,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { NowPlaying } from '../components/nowPlaying';
 import { PerfectMovies } from '../components/perfectMovies';
+import { useNavigate } from '../hooks/useNavigate';
 
 export default function Home() {
   const [movies, setMovies] = useState<IMovies[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0); 
+
+  const { navigate } = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -77,7 +80,7 @@ export default function Home() {
               </View>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => alert(`See details of ${movie.title}`)}
+                onPress={() => navigate('movieDetails', { id: movie.id })}
               >
                 <Text style={styles.buttonText}>See Details</Text>
               </TouchableOpacity>
