@@ -10,7 +10,7 @@ export const Header = () => {
                 title1="Movie"
                 title2="zone"
                 weight="700"
-                size={25}
+                size={30}
             />
             <View style={styles.icon}>
                 <Feather name="bell" color={colors.ice} size={25} />

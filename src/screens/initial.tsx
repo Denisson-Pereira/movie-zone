@@ -1,7 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { BgInitialContainer } from '../containers/bgInitialContainer';
 import { colors } from '../colors';
-import { useNavigate } from '../hooks/useNavigate';
 import { TitleCustoms } from '../customs/titleCustoms';
 import { BtnCustoms } from '../customs/btnCustoms';
 
