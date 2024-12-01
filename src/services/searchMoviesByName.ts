@@ -2,13 +2,13 @@ import { AxiosError } from "axios";
 import { IMovies } from "../models/IMovies";
 import { api } from "./tmdbConnection";
 
-
-export const getRecommendedMovies = async (): Promise<IMovies[]> => {
+export const searchMoviesByName = async (searchTerm: string): Promise<IMovies[]> => {
   try {
-    const { data } = await api.get("movie/popular", {
+    const { data } = await api.get("search/movie", {
       params: {
+        query: searchTerm,  
         language: "pt-BR",  
-        page: 1,  
+        page: 1,           
       },
     });
 
@@ -19,7 +19,7 @@ export const getRecommendedMovies = async (): Promise<IMovies[]> => {
       return [];
     }
   } catch (error: AxiosError | any) {
-    console.error("Error fetching recommended movies:", error.response || error);
+    console.error("Error fetching movies by name:", error.response || error);
     return [];
   }
 };
