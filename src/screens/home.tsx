@@ -6,6 +6,8 @@ import { IMovies } from '../models/IMovies';
 import { getMoviesNowPlaying } from '../services/getMoviesNowPlaying';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome } from '@expo/vector-icons'; 
+import { NowPlaying } from '../components/nowPlaying';
+import { PerfectMovies } from '../components/perfectMovies';
 
 export default function Home() {
   const [movies, setMovies] = useState<IMovies[]>([]);
@@ -84,6 +86,8 @@ export default function Home() {
           />
         ))}
       </View>
+      <NowPlaying />
+      <PerfectMovies />
     </ScrollView>
   );
 }
@@ -94,9 +98,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg,
   },
   verticalContent: {
-    paddingTop: 50,
+    paddingTop: 60,
     paddingHorizontal: 10,
     gap: 20,
+    paddingBottom: 40
   },
   horizontalScrollView: {
     flexGrow: 0,
