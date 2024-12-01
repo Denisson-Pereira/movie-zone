@@ -25,10 +25,9 @@ export default function Home() {
     return <Text>Loading...</Text>;
   }
 
-  // Função para atualizar o índice do filme atual com base na posição de rolagem
   const handleScroll = (event: any) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
-    const index = Math.floor(contentOffsetX / 380); // A largura do item é 380
+    const index = Math.floor(contentOffsetX / 380); 
     setCurrentIndex(index);
   };
 

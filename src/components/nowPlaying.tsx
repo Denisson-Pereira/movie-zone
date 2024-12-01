@@ -3,9 +3,11 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "rea
 import { IMovies } from "../models/IMovies";
 import { getMoviesNowPlaying } from "../services/getMoviesNowPlaying";
 import { colors } from "../colors";
+import { useNavigate } from "../hooks/useNavigate";
 
 export const NowPlaying = () => {
     const [movies, setMovies] = useState<IMovies[]>([]);
+    const { navigate } = useNavigate();
 
     useEffect(() => {
         async function fechDate() {
@@ -29,6 +31,7 @@ export const NowPlaying = () => {
                         <TouchableOpacity 
                             key={item.id}
                             style={styles.containerMovie}
+                            onPress={() => navigate('movieDetails', { id: item.id})}
                         >
                             <Image 
                                 source={{ uri: `https://image.tmdb.org/t/p/original/${item.poster_path}` }} 

@@ -5,6 +5,7 @@ import { TabRoutes } from "./tab.routes";
 import Initial from "../screens/initial";
 import SignIn from "../screens/signIn";
 import SignUp from "../screens/signUp";
+import MovieDetails from "../screens/movieDetails";
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ export default function Routes() {
                 {user ? (
                     <>
                         <Stack.Screen name="tabViews" component={TabRoutes} />
+                        <Stack.Screen name="movieDetails" component={MovieDetails} />
                     </>
                 ) : (
                     <>
