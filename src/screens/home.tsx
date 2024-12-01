@@ -35,7 +35,7 @@ export default function Home() {
           colors={[
             'rgba(0, 0, 0, 0.048)', 
             'rgba(0, 0, 0, 0.493)',  
-            'rgba(0, 0, 0, 0.658)',  
+            'rgba(0, 0, 0, 0.795)',  
             'rgba(0, 0, 0, 0.842)',  
             colors.bg,              
           ]}
@@ -48,7 +48,11 @@ export default function Home() {
               <FontAwesome name="star" size={18} color="black" style={styles.star} />
               <Text style={styles.voteAverage}>{movies[0].vote_average}</Text>
             </View>
+            <View style={styles.rConstant}>
+              <Text>R</Text>
+            </View>
             <Text style={styles.releaseDate}>{movies[0].release_date}</Text>
+            <Text style={styles.releaseDate}>Action</Text>
           </View>
           <TouchableOpacity style={styles.button} onPress={() => alert('See details pressed')}>
             <Text style={styles.buttonText}>See Details</Text>
@@ -96,16 +100,17 @@ const styles = StyleSheet.create({
     gap: 10
   },
   movieTitle: {
-    color: colors.ice,
+    color: colors.white,
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
   },
   ratingAndDateContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: '100%',
     alignItems: 'center',
+    gap: 20
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -120,6 +125,14 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  rConstant: {
+    backgroundColor: colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 20,
+    height: 20,
+    borderRadius: 50
+  },
   star: {
     marginRight: 5,
   },
@@ -130,21 +143,19 @@ const styles = StyleSheet.create({
   },
   releaseDate: {
     fontSize: 16,
-    color: colors.ice,
-    fontWeight: 'bold',
+    color: colors.white,
+    fontWeight: '400',
     textAlign: 'right',
   },
   button: {
-    backgroundColor: colors.bg,
+    backgroundColor: colors.orange,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 30,
-    borderWidth: 1,
-    borderColor: colors.ice,
+    borderRadius: 10,
   },
   buttonText: {
     color: colors.ice,
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '400',
   },
 });
