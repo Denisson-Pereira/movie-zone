@@ -25,8 +25,18 @@ export default function Home() {
     return <Text>Loading...</Text>;
   }
 
+  // Função para atualizar o índice do filme atual com base na posição de rolagem
+  const handleScroll = (event: any) => {
+    const contentOffsetX = event.nativeEvent.contentOffset.x;
+    const index = Math.floor(contentOffsetX / 380); // A largura do item é 380
+    setCurrentIndex(index);
+  };
+
   return (
-    <ScrollView style={styles.verticalScrollView} contentContainerStyle={styles.verticalContent}>
+    <ScrollView style={styles.verticalScrollView} 
+      contentContainerStyle={styles.verticalContent}
+      showsVerticalScrollIndicator={false}
+    >
       <StatusBar barStyle="light-content" />
       <Header />
       <ScrollView
@@ -35,6 +45,7 @@ export default function Home() {
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
         style={styles.horizontalScrollView}
+        onScroll={handleScroll}  
       >
         {movies.map((movie, index) => (
           <View key={movie.id} style={styles.primeContainer}>
