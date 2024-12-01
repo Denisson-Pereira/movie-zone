@@ -1,17 +1,37 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { TitleCustoms } from '../customs/titleCustoms';
 import { colors } from '../colors';
 import { Entypo, EvilIcons, FontAwesome } from "@expo/vector-icons";
 import { useState } from 'react';
+import { useNavigate } from '../hooks/useNavigate';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../services/firebaseConnection';
 
 export default function SignIn() {
+  const { navigate } = useNavigate();
   const [passwordType, setPasswordType] = useState<boolean>(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const seePassword = () => {
     if (passwordType) {
       setPasswordType(false);
     } else {
       setPasswordType(true);
+    }
+  }
+
+  const handleSignIn = async () => {
+    if (email === null || password === null) {
+      Alert.alert('Error', 'Please fill in all fields before proceeding.');
+      return;
+    }
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      Alert.alert('Sucess', 'Login successful!');
+      navigate('signIn');
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
     }
   }
 
@@ -34,16 +54,20 @@ export default function SignIn() {
       <View style={styles.inputContainer}>
         <View style={styles.input}>
           <TextInput
-            placeholder='Email / Phone Number'
+            placeholder='E-mail'
             placeholderTextColor={colors.grey}
-            style={{ fontSize: 18 }}
+            style={{ fontSize: 18, color: colors.ice, width: '90%' }}
+            value={email}
+            onChangeText={setEmail}
           />
         </View>
         <View style={styles.input}>
           <TextInput
             placeholder='Password'
             placeholderTextColor={colors.grey}
-            style={{ fontSize: 18 }}
+            style={{ fontSize: 18, color: colors.ice, width: '90%' }}
+            value={password}
+            onChangeText={setPassword}
             secureTextEntry={passwordType}
           />
           <Entypo
@@ -57,6 +81,7 @@ export default function SignIn() {
       <View style={styles.viewContainer}>
         <TouchableOpacity
           style={styles.btn}
+          onPress={handleSignIn}
         >
           <Text style={styles.txtBtn}>Sign In</Text>
         </TouchableOpacity>
@@ -80,7 +105,9 @@ export default function SignIn() {
       </View>
       <View style={styles.registerContainer}>
         <Text style={styles.txt2}>Not registered yet? </Text>
-        <Text style={styles.txtRed}>Sign Up</Text>
+        <TouchableOpacity onPress={() => navigate('signUp')}>
+          <Text style={styles.txtRed}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
