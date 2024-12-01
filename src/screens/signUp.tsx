@@ -199,7 +199,6 @@ const styles = StyleSheet.create({
   registerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingBottom: 50
   },
   txt2: {
     color: colors.ice,

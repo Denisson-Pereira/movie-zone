@@ -14,6 +14,5 @@ const styles = StyleSheet.create({
     titleContainer: {
         flexDirection: 'row',
         alignItems: 'flex-end',
-        marginTop: 90
     },
 });

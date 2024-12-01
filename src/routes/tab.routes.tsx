@@ -3,6 +3,7 @@ import { AntDesign, FontAwesome5, Octicons } from "@expo/vector-icons";
 import Home from "../screens/home";
 import Profile from "../screens/profile";
 import Search from "../screens/search";
+import { colors } from "../colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,8 +14,12 @@ export const TabRoutes = () => {
             screenOptions={({ route }) => ({
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: "#FE724C",
+                tabBarActiveTintColor: colors.orange,
                 tabBarInactiveTintColor: "#D3D1D8",
+                tabBarStyle: {
+                    backgroundColor: colors.bg,
+                    borderColor: '#ffffff0'
+                }
             })}
         >
             <Tab.Screen
