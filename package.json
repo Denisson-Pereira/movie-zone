@@ -1,6 +1,6 @@
 {
   "name": "mobile",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "index.ts",
   "scripts": {
     "start": "expo start",
@@ -9,15 +9,16 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.24.0",
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/bottom-tabs": "^7.0.14",
     "@react-navigation/native": "^7.0.12",
     "@react-navigation/stack": "^7.0.14",
     "axios": "^1.7.8",
     "expo": "~52.0.11",
-    "expo-linear-gradient": "^14.0.1",
+    "expo-linear-gradient": "~14.0.1",
     "expo-status-bar": "~2.0.0",
     "firebase": "^11.0.2",
+    "mobile": "file:",
     "react": "18.3.1",
     "react-native": "0.76.3",
     "react-native-linear-gradient": "^2.8.3",
