@@ -4,6 +4,6 @@
 ![Web 2](./github/img2.png) 
 ![Web 3](./github/img3.png) 
 ![Web 4](./github/img4.png) 
-![Web 5](./github/img5.jpg) 
+![Web 5](./github/img5.png) 
 ![Web 6](./github/img6.png) 
  
