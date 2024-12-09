@@ -5,7 +5,7 @@ import { Entypo, EvilIcons, FontAwesome } from "@expo/vector-icons";
 import { useState } from 'react';
 import { useNavigate } from '../hooks/useNavigate';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../services/firebaseConnection';
+import { auth } from '../../firebaseConfig';
 
 export default function SignIn() {
   const { navigate } = useNavigate();

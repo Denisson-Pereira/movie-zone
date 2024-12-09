@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { signOut } from "firebase/auth";
 import { colors } from "../colors"; 
-import { auth } from "../services/firebaseConnection";
+import { auth } from "../../firebaseConfig";
 import { useNavigate } from "../hooks/useNavigate";
 
 export default function Profile() {
