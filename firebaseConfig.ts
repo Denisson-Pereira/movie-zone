@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from 'firebase/auth'
+import {getAuth, initializeAuth, getReactNativePersistence} from 'firebase/auth';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCcsI7fAuxs-tw5CWiH4bVh3W553nA5C_0",
@@ -11,4 +12,11 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+
+//Não pode ter duas instancias do banco
+//export const auth = getAuth(app);
+
+export const authFirebase = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+});
+

@@ -5,7 +5,7 @@ import { Entypo, EvilIcons, FontAwesome } from "@expo/vector-icons";
 import { useState } from 'react';
 import { useNavigate } from '../hooks/useNavigate';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebaseConfig';
+import { authFirebase } from '../../firebaseConfig';
 
 export default function SignIn() {
   const { navigate } = useNavigate();
@@ -27,7 +27,7 @@ export default function SignIn() {
       return;
     }
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(authFirebase, email, password);
       Alert.alert('Sucess', 'Login successful!');
       navigate('initial');
     } catch (error: any) {

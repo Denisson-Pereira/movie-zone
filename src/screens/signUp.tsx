@@ -5,7 +5,7 @@ import { Entypo, EvilIcons, FontAwesome } from "@expo/vector-icons";
 import { useState } from 'react';
 import { useNavigate } from '../hooks/useNavigate';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebaseConfig';
+import { authFirebase } from '../../firebaseConfig';
 
 export default function SignUp() {
   const { navigate } = useNavigate();
@@ -24,7 +24,7 @@ export default function SignUp() {
       return;
     }
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(authFirebase, email, password);
       Alert.alert('Success', 'Account created successfully!');
       navigate('signIn');
     } catch (error: any) {
