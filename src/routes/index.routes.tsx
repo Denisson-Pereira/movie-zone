@@ -17,7 +17,7 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {user?.uid ?  (
+        {user ? (
           <>
             <Stack.Screen name="tabViews" component={TabRoutes} />
             <Stack.Screen name="movieDetails" component={MovieDetails} />

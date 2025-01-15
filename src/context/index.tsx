@@ -7,10 +7,21 @@ interface AuthContextType {
   loading: boolean;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
+interface AuthContextTestType {
+  user: boolean;
+  loading: boolean;
+}
+
+interface IProps {
+  children: React.ReactNode;
+}
+
+
+const AuthContext = createContext<AuthContextTestType>({} as AuthContextTestType);
+
+export const AuthProvider: React.FC<IProps> = ({ children }) => {
+  const [user, setUser] = useState<boolean>(true);
   const [loading, setLoading] = useState(true);
 
 /*   useEffect(() => {
@@ -29,10 +40,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 };
 
-export const useAuth = (): AuthContextType => {
+export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
-  }
   return context;
 };
