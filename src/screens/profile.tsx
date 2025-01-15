@@ -2,16 +2,16 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { signOut } from "firebase/auth";
 import { colors } from "../colors"; 
-import { auth } from "../../firebaseConfig";
+import { authFirebase } from "../../firebaseConfig";
 import { useNavigate } from "../hooks/useNavigate";
 
 export default function Profile() {
   const { navigate } = useNavigate(); 
-  const user = auth.currentUser;
+  const user = authFirebase.currentUser;
 
   const handleLogout = async () => {
     try {
-        await signOut(auth); 
+        await signOut(authFirebase); 
         navigate('home'); 
     } catch (error) {
         console.error("Error during logout", error);
