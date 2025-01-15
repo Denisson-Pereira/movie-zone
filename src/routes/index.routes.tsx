@@ -1,11 +1,13 @@
+import React from 'react';
+
 import { createStackNavigator } from "@react-navigation/stack";
 import { useAuth } from "../context";
 import { NavigationContainer } from "@react-navigation/native";
 import { TabRoutes } from "./tab.routes";
-import Initial from "../screens/initial";
+import Initial from "../screens/Initial";
 import SignIn from "../screens/signIn";
 import SignUp from "../screens/signUp";
-import MovieDetails from "../screens/movieDetails";
+import MovieDetails from "../screens/MovieDetails";
 
 const Stack = createStackNavigator();
 
@@ -15,7 +17,7 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {user ? (
+        {user?.uid ?  (
           <>
             <Stack.Screen name="tabViews" component={TabRoutes} />
             <Stack.Screen name="movieDetails" component={MovieDetails} />

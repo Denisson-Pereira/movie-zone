@@ -1,3 +1,4 @@
+
 import { Image, StyleSheet, Text, View, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { Header } from '../components/header';
 import { colors } from '../colors';
