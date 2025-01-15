@@ -1,5 +1,5 @@
 {
-  "name": "mobile",
+  "name": "movie-zone",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
@@ -19,7 +19,7 @@
     "expo-linear-gradient": "~14.0.2",
     "expo-status-bar": "~2.0.1",
     "firebase": "^11.0.2",
-    "mobile": "file:",
+    "movie-zone": "file:",
     "react": "18.3.1",
     "react-native": "0.76.6",
     "react-native-linear-gradient": "^2.8.3",

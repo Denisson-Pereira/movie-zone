@@ -13,14 +13,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+/*   useEffect(() => {
     const unsubscribe = onAuthStateChanged(authFirebase, (user) => {
       setUser(user);
       setLoading(false);
     });
 
     return unsubscribe;
-  }, []);
+  }, []); */
 
   return (
     <AuthContext.Provider value={{ user, loading }}>

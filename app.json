@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "mobile-zone",
-    "slug": "mobile",
-    "version": "2.2.0",
+    "name": "movie-zone",
+    "slug": "movie-zone",
+    "version": "2.3.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
